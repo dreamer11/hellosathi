@@ -13,6 +13,18 @@
 
 
 Route::get('/', 'PageController@index');
-Route::get('signup', 'PageController@signupForm');
-Route::post('signup', 'FormController@signupSave');
-Route::get('login', 'PageController@login');
+
+Route::group(['middleware'=>'guest'], function (){
+    Route::get('register', 'PageController@registerForm');
+    Route::post('register', 'FormController@registerUser');
+    Route::get('login', 'PageController@loginForm');
+    Route::post('login', 'FormController@loginUser');
+
+});
+
+
+Route::group(['middleware'=>'auth'], function () {
+
+    Route::get('post', 'PostController@showPost');
+    Route::post('addpost', 'PostController@addPost');
+});

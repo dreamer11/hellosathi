@@ -8,16 +8,19 @@ class PageController extends Controller
 
     public function index(){
 
-        return view('welcome');
+        return view('home');
     }
-    public function login(){
+
+
+    public function loginForm(){
 
         return view('pages.login');
     }
 
-    public function signupForm(){
 
-        return view('pages.signup');
+    public function registerForm(){
+
+        return view('pages.register');
     }
 
 

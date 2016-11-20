@@ -9,7 +9,7 @@
         <div class="col-xs-8 col-xs-offset-2">
             <h2>Signup Form</h2>
             <hr>
-            <form action="{{ url('signup') }}" method="post">
+            <form action="{{ url('createUser') }}" method="post">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label for="first_name">First Name</label>
@@ -32,7 +32,7 @@
                     <span class="text-danger">{{ $errors->first('password') }}</span>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password </label>
+                    <label for="password">Re-enter Password </label>
                     <input type="text" name="password_confirmation" class="form-control">
                 </div>
                 <div>
