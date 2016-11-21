@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name','email', 'password',
+        'first_name', 'last_name','email', 'password','auth_token'
     ];
 
     /**
@@ -24,12 +24,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token','auth_token'
     ];
 
     function setPasswordAttribute($value)
     {
         $this->attributes['password']=bcrypt($value);
+    }
+
+    function posts(){
+        return $this->hasMany(Post::class,'user_id');
     }
 
 }

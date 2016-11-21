@@ -27,4 +27,5 @@ Route::group(['middleware'=>'auth'], function () {
 
     Route::get('post', 'PostController@showPost');
     Route::post('addpost', 'PostController@addPost');
+    Route::get('logout', 'FormController@logoutHere');
 });

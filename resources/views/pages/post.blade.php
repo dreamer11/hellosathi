@@ -6,7 +6,11 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
+                    @if(Session::has('message'))
+                        {!! Session::get('message') !!}
+                    @endif
                     <div class="panel-heading" style="margin-left: 9%">Add New Post here</div>
+
                     <div class="panel-body">
                         <form class="form-horizontal" role="form" method="POST" action="{{ url('/addpost') }}">
                             {{ csrf_field() }}
@@ -37,17 +41,11 @@
         @foreach($feeds as $value)
             <div class="col-md-6 col-md-offset-3 well well-sm">
                 <div class="" style="margin-left:11%; margin-right:11%">
-                   {{ $value->post; }}
-                   {{ $value->create_at; }}
+                    {{ $value->post }}
+                    {{ ($value->created_at) }}
 
                 </div>
             </div>
         @endforeach
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
 @endsection

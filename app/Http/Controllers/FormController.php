@@ -28,4 +28,10 @@ class FormController extends Controller
         }
             dd("failed");
     }
+
+    public function logoutHere()
+    {
+        Auth::logout();
+        return redirect('login');
+    }
 }
