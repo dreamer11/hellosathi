@@ -15,7 +15,6 @@ class CreateUserAuthToken extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('auth_token');
             $table->rememberToken();
         });
     }
