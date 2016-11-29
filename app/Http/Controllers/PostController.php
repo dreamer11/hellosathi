@@ -24,8 +24,22 @@ class PostController extends Controller
 //        $user->posts()->create( $request->only('post'));
 //         dd( DB::getQueryLog() );
         $user = Auth::user();
-        $user->posts()->create($request->only(['post']));
+        $user->posts()->create($request->only(['post','image']));
 
         return redirect('post')->with('message', '<div class="alert alert-success">Post Created Successfully </div>');
     }
+
+//    public function addImage(PostRequest $request)
+//    {
+//
+////        $user = $request->user();
+////        $user->posts()->create( $request->only('post'));
+////         dd( DB::getQueryLog() );
+//        $user = Auth::user();
+//        $user->posts()->create($request->only(['post']));
+//
+//        return redirect('post')->with('message', '<div class="alert alert-success">Post Created Successfully </div>');
+//    }
+
+
 }

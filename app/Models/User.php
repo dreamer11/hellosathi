@@ -15,8 +15,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name','email', 'password','auth_token'
+        'first_name', 'last_name','email', 'image', 'password','auth_token'
     ];
+
+    protected $appends = ['thumb'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -34,6 +36,11 @@ class User extends Authenticatable
 
     function posts(){
         return $this->hasMany(Post::class,'user_id');
+    }
+
+    function getThumbAttribute(){
+
+        return route('user.thumb',[$this->image]);
     }
 
 }

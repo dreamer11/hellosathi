@@ -18,8 +18,13 @@
                             <div class="form-group{{ $errors->has('post') ? ' has-error' : '' }}">
 
                                 <div class="col-md-4 col-md-offset-1">
-                                    <textarea name="post" id="" cols="67" rows="3" value="{{ old('first_name') }}"
+                                    <textarea name="post" id="" cols="67" rows="3" value="{{ old('post') }}"
                                               required></textarea>
+                                    <h5>or Add Image</h5>
+
+                                    <div style="margin-top: 5px; margin-bottom: 8px">
+                                        <input type="file" name="image" accept="image/*">
+                                    </div>
 
                                     @if ($errors->has('post'))
                                         <span class="help-block">
@@ -27,12 +32,20 @@
                                     </span>
                                     @endif
 
+                                    @if ($errors->has('image'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('image') }}</strong>
+                                    </span>
+                                    @endif
+
                                     <button type="submit" class="btn btn-primary">
                                         Post
                                     </button>
+
                                 </div>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -42,7 +55,13 @@
             <div class="col-md-6 col-md-offset-3 well well-sm">
                 <div class="" style="margin-left:11%; margin-right:11%">
                     {{ $value->post }}
-                    {{ ($value->created_at) }}
+                    <br>
+
+                    @if($value->image)
+                    <img src="{{ $value->getImage( 200, 130 ) }}" />
+                   {{--{{ $value->image}}--}}
+                    @endif
+                    {{ ($value->created_at->format('M jS, Y')) }}
 
                 </div>
             </div>

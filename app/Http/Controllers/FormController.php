@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignUpRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -13,13 +14,13 @@ class FormController extends Controller
 
     public function registerUser(SignUpRequest $request)
     {
-        $dataArr=$request->only(['first_name','last_name','email','password']);
+        $dataArr=$request->only(['first_name','last_name','email','password','image']);
         User::create($dataArr);
 //        return redirect('feeds');
         return redirect('login');
     }
 
-    public function loginUser(Request $request)
+    public function loginUser(LoginRequest $request)
     {
         $userData=$request->only(['email','password']);
         if(Auth::attempt($userData)){

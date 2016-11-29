@@ -13,6 +13,9 @@
 
 
 Route::get('/', 'PageController@index');
+Route::get('filter', 'ImageIntervention@index');
+Route::get('thumb/{image}', 'ImageIntervention@generateThumb')->name('user.thumb');
+Route::get('images/{image}/{width?}/{height?}', 'ImageIntervention@generateImages')->name('post.images');
 
 Route::group(['middleware'=>'guest'], function (){
     Route::get('register', 'PageController@registerForm');
@@ -28,4 +31,12 @@ Route::group(['middleware'=>'auth'], function () {
     Route::get('post', 'PostController@showPost');
     Route::post('addpost', 'PostController@addPost');
     Route::post('logout', 'FormController@logoutHere');
+    Route::get('logout', 'FormController@logoutHere');
+    Route::get('/', 'PostController@showPost');
 });
+
+
+Route::group(['prefix'=>'api', 'middleware'=>'auth'],function (){
+    Route::get('posts','ApiController@posts');
+});
+
