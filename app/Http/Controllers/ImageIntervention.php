@@ -27,15 +27,15 @@ class ImageIntervention extends Controller
     }
 
     function generateThumb( $image ){
-        $thumb = \Image::make( public_path( 'image/' . $image ) );
+        $thumb = Image::make( public_path( 'image/' . $image ) );
         $thumb->resize( 40, 30 );
-        return $thumb->response();
+        return $thumb->response('jpg');
     }
 
-  function generateImages( $image,$width=100,$height =100 ){
-        $images = \Image::make( public_path( 'image/' . $image ) );
+  function generateImages( $image,$width=150,$height =120 ){
+        $images = Image::make( public_path( 'image/' . $image ) );
         $images->resize( $width, $height );
-        return $images->response();
+        return $images->response('jpg');
     }
 
 

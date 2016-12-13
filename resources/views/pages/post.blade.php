@@ -54,14 +54,15 @@
         @foreach($feeds as $value)
             <div class="col-md-6 col-md-offset-3 well well-sm">
                 <div class="" style="margin-left:11%; margin-right:11%">
-                    {{ $value->post }}
+                    <h4><b>{{ Auth::user()->first_name }}</b></h4>
+                    {{ ($value->created_at->format('M jS ')) }}
                     <br>
-
+                    {{ $value->post }} <br>
                     @if($value->image)
-                    <img src="{{ $value->getImage( 200, 130 ) }}" />
+                    <img src="{{ $value->getImage(150,120) }}" />
                    {{--{{ $value->image}}--}}
                     @endif
-                    {{ ($value->created_at->format('M jS, Y')) }}
+
 
                 </div>
             </div>

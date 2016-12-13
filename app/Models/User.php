@@ -15,10 +15,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name','email', 'image', 'password','auth_token'
+        'first_name', 'last_name','email', 'image', 'password','auth_token','auth_token'
     ];
 
-    protected $appends = ['thumb'];
+    protected $appends = ['thumb','name'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token'
+        'password', 'remember_token','auth_token'
     ];
 
     function setPasswordAttribute($value)
@@ -41,6 +41,10 @@ class User extends Authenticatable
     function getThumbAttribute(){
 
         return route('user.thumb',[$this->image]);
+    }
+    function getNameAttribute(){
+
+        return $this->first_name." ".$this->last_name ;
     }
 
 }

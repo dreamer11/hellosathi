@@ -36,7 +36,13 @@ Route::group(['middleware'=>'auth'], function () {
 });
 
 
-Route::group(['prefix'=>'api', 'middleware'=>'auth'],function (){
+Route::group(['prefix'=>'api', 'middleware'=>'auth-token' ],function (){
     Route::get('posts','ApiController@posts');
 });
 
+
+
+
+Route::get('test', function (){
+    return view('test');
+});

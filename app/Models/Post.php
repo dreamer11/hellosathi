@@ -24,4 +24,9 @@ class Post extends Model
     function getImage( $width = 100, $height = 100) {
         return route('post.images',[$this->image, $width,$height ]);
     }
+
+
+
+
 }
+

@@ -110,8 +110,8 @@
     </nav>
 
     @yield('content')
-</div>
 
+</div>
 <!-- Scripts -->
 <script src="/js/app.js"></script>
 </body>

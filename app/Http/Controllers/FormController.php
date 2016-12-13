@@ -25,6 +25,10 @@ class FormController extends Controller
         $userData=$request->only(['email','password']);
         if(Auth::attempt($userData)){
 
+            $user=Auth::user();
+            $user->auth_token=md5($user->email.time().str_random());
+            $user->save();
+
           return redirect('post');
         }
             dd("failed");
